@@ -1,0 +1,24 @@
+name: npm-lint
+
+on: [pull_request]
+
+jobs:
+    npm-lint:
+      name: Test linting and formatting of TypeScript/JavaScript code in the current pull request
+      runs-on: ubuntu-latest
+      timeout-minutes: 30
+      steps:
+        - name: Checkout code repository
+          uses: actions/checkout@v3
+  
+        - name: Install npm packages including eslint and prettier
+          run: npm ci
+  
+        - name: Get added or modified files in current PR
+          id: changed-files
+          run: |
+            echo "::set-output name=files::$(git --no-pager diff --name-only ${{ github.base_ref }}..${{ github.head_ref }})"
+  
+        - name: Run eslint on added or modified files
+          run: ./node_modules/eslint/bin/eslint.js ${{ steps.changed-files.outputs.files }}
+  

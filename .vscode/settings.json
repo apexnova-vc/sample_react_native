@@ -1,0 +1,65 @@
+{
+    /*
+        非特殊情况请勿修改此文件, 鼠标放在具体语句上会有vscode自带的解释
+    */
+    /*
+        python相关
+    */
+    "python.envFile": "${workspaceRoot}/env", // vscode可以自动运行env环境·
+    // 以下这个是默认的python位置。vscode的python和Pylance拓展会用这个语句查找拓展使用的python。建议设置并使用env里的python，请勿修改这行
+    "python.terminal.activateEnvironment": true, // 如果env设置无误，当前文件为python文件时，打开terminal会自动进入env环境
+    // language server会提供一些功能，比如代码补全建议，代码analysis
+    // 安装vscode的Pylance拓展，暂时用Pylance自带的analysis，之后修改
+    // "python.linting.lintOnSave": true, 暂时无用
+    // Pylance的代码分析的相关设置，比如遇到某些问题不报错
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.diagnosticSeverityOverrides": {
+        // "reportUnknownVariableType": "none",
+        "reportUnknownMemberType": "none"
+    },
+    // "eslint.options": {
+    //     "overrideConfigFile": ".eslintrc.json"
+    // },
+    "[python]": {
+        // .py
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+            "source.fixAll": true
+        }
+    },
+    "[scss]": {
+        // .scss
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.stylelint": true
+        }
+    },
+    "[javascript]": {
+        // .js
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        }
+    },
+    "[typescript]": {
+        // .ts
+        "editor.formatOnSave": false, // 阻止vscode自带的format on save，否则会overrride eslint/prettier format
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true // eslint会自动format以及修改错误，这个不需要的话可以讨论，可能fixAll会出现一些不想有的改动
+        }
+    },
+    "[typescriptreact]": {
+        // .tsx
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        }
+    },
+    "java.compile.nullAnalysis.mode": "automatic",
+    // 不显示vscode自带的ts(7016) js(xxxx)类warning
+    "typescript.validate.enable": false,
+    "javascript.validate.enable": false,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "eslint.enable": true,
+}
